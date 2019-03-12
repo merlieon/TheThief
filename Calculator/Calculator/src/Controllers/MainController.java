@@ -2,6 +2,7 @@ package Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import Application.Calculator;;
 
@@ -10,6 +11,11 @@ public class MainController {
 	
 	 
 	@FXML TextArea textAreaEquation;
+	@FXML Label lblResult;
+	
+	public void addZero() {
+		textAreaEquation.appendText("0");
+	}
 	
 	public void addOne() {
 		textAreaEquation.appendText("1");
@@ -73,7 +79,7 @@ public class MainController {
 	
 	public void result() {
 		Calculator calc = new Calculator();
-		System.out.println(calc.calculateExpression(textAreaEquation.getText()));
+	lblResult.setText("Result: " + calc.calculateExpression(textAreaEquation.getText()));
 		
 	}
 	
