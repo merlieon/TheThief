@@ -105,6 +105,14 @@ public class CalcTest {
 	}
 	
 	@Test
+	public void testMultipleDivisinSigns() {
+		String input = "10/2/2";
+		String actual = calc.calculateExpression(input);
+		
+		assertEquals("2.5", actual);
+	}
+	
+	@Test
 	public void testMultipleOperators() {
 		String input = "3-7*5";
 		String actual = calc.calculateExpression(input);
@@ -167,6 +175,29 @@ public class CalcTest {
 		
 		assertEquals("5.0", actual);
 	}
+	
+	@Test
+	public void testMultipleOperators9() {
+		String input = "2+4*2%2-4/2";
+		String actual = calc.calculateExpression(input);
+		
+		assertEquals("0.0", actual);
+	}
+	
+	@Test(expected = ArithmeticException.class)
+	public void testDivideByZero() {
+		String input = "3/0";
+		String actual = calc.calculateExpression(input);
+	}
+	
+	@Test
+	public void testDoubleMinusSign() {
+		String input = "3--2";
+		String actual = calc.calculateExpression(input);
+
+		assertEquals("5.0", actual);
+	}
+
 
 	@Test
 	public void testModulus() {

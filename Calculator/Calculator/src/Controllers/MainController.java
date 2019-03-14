@@ -4,6 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import Application.Calculator;;
 
 
@@ -12,6 +19,12 @@ public class MainController {
 	 
 	@FXML TextArea textAreaEquation;
 	@FXML Label lblResult;
+	
+	
+//	Adding text to gui
+	public void addDot() {
+		textAreaEquation.appendText(".");
+	}
 	
 	public void addZero() {
 		textAreaEquation.appendText("0");
@@ -73,13 +86,23 @@ public class MainController {
 		textAreaEquation.appendText("%");
 	}
 	
+//	Clearing gui text
 	public void clear() {
 		textAreaEquation.clear();
 	}
 	
+//	Getting result of the giveng equation
 	public void result() {
 		Calculator calc = new Calculator();
-	lblResult.setText("Result: " + calc.calculateExpression(textAreaEquation.getText()));
+		try {
+			if (textAreaEquation.getText().matches("[a-ö].+||[A-Ö.+]") && !textAreaEquation.getText().matches("[0-9]")) {
+				textAreaEquation.setText("You cannot have letters in the equation.");
+			} else {
+				lblResult.setText("Result: " + calc.calculateExpression(textAreaEquation.getText()));	
+			}
+		} catch (ArithmeticException e) {
+			textAreaEquation.setText("You cannot divide by zero");
+		}
 		
 	}
 	

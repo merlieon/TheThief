@@ -30,8 +30,9 @@
             <Button layoutX="213.0" layoutY="203.0" mnemonicParsing="false" onAction="#addPlus" prefHeight="35.0" prefWidth="58.0" text="+" />
             <Button layoutX="213.0" layoutY="245.0" mnemonicParsing="false" onAction="#result" prefHeight="77.0" prefWidth="58.0" text="=" />
             <TextArea fx:id="textAreaEquation" layoutX="14.0" layoutY="23.0" prefHeight="85.0" prefWidth="258.0" />
-            <Label fx:id="lblResult" layoutX="15.0" layoutY="6.0" />
-            <Button fx:id="btnZero" layoutX="15.0" layoutY="287.0" mnemonicParsing="false" onAction="#addZero" prefHeight="35.0" prefWidth="191.0" text="0" />
+            <Label fx:id="lblResult" layoutX="15.0" layoutY="6.0" text="Result:" />
+            <Button layoutX="15.0" layoutY="287.0" mnemonicParsing="false" onAction="#addZero" prefHeight="35.0" prefWidth="125.0" text="0" />
+            <Button layoutX="148.0" layoutY="287.0" mnemonicParsing="false" onAction="#addDot" prefHeight="35.0" prefWidth="58.0" text="." />
          </children>
       </Pane>
    </center>
