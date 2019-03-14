@@ -160,6 +160,9 @@ public class Calculator {
 		}
 		for (int i = 1; i < split.length; i+= 2) {
 			String op = split[i];
+			if (expression.contains("--")) {
+				System.out.println("--");
+			}
 			double num = Double.parseDouble(split[i+1]);
 				switch (op) {
 				case "+":

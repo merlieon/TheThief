@@ -97,13 +97,15 @@ public class MainController {
 		try {
 			if (textAreaEquation.getText().matches("[a-ö].+||[A-Ö.+]") && !textAreaEquation.getText().matches("[0-9]")) {
 				textAreaEquation.setText("You cannot have letters in the equation.");
-			} else {
+
+			} else{
 				lblResult.setText("Result: " + calc.calculateExpression(textAreaEquation.getText()));	
 			}
 		} catch (ArithmeticException e) {
 			textAreaEquation.setText("You cannot divide by zero");
+		} catch (NumberFormatException e) {
+			textAreaEquation.setText("You have typed a not allowed sign or a double sign.");
 		}
-		
 	}
 	
 	

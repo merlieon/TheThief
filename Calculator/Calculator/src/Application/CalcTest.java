@@ -2,6 +2,7 @@ package Application;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Categories.ExcludeCategory;
 
 public class CalcTest {
 
@@ -184,26 +185,32 @@ public class CalcTest {
 		assertEquals("0.0", actual);
 	}
 	
-	@Test(expected = ArithmeticException.class)
-	public void testDivideByZero() {
-		String input = "3/0";
-		String actual = calc.calculateExpression(input);
-	}
-	
-	@Test
-	public void testDoubleMinusSign() {
-		String input = "3--2";
-		String actual = calc.calculateExpression(input);
-
-		assertEquals("5.0", actual);
-	}
-
-
 	@Test
 	public void testModulus() {
 		String input = "2%11";
 		String actual = calc.calculateExpression(input);
 		
 		assertEquals("2.0", actual);
+	}
+
+//	Exceptions
+	
+	@Test(expected = ArithmeticException.class)
+	public void testDivideByZero() {
+		String input = "3/0";
+		String actual = calc.calculateExpression(input);
+	}
+	
+	@Test(expected = NumberFormatException.class)
+	public void testDoublePlusSign() {
+		String input = "3++2";
+		String actual = calc.calculateExpression(input);
+
+	}
+	
+	@Test(expected = NumberFormatException.class)
+	public void testLetters() {
+		String input = "basd+qe";
+		String actual = calc.calculateExpression(input);
 	}
 }
