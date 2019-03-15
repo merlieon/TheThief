@@ -3,13 +3,9 @@ package Main;
 import java.awt.Canvas;
 
 public class Game extends Canvas implements Runnable{
-
-	public static void main(String[] args) {
-		new Game();
-	}
 	
 	public Game() {
-		new Window(250, 250, "TheThief", this);
+		new Window(625, 625, "TheThief", this);
 	}
 
 	@Override
@@ -18,4 +14,8 @@ public class Game extends Canvas implements Runnable{
 		
 	}
 
+	
+	public static void main(String[] args) {
+		new Game();
+	}
 }
